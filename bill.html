@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Final Bill - Spice Symphony</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('./restaurant-interiors.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .bill-container {
+      max-width: 700px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 15px;
+      max-width: 120px;
+      height: auto;
+    }
+
+    .restaurant-name {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #8B0000;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .total {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .btn-clear {
+      background-color: #8B0000;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-clear:hover {
+      background-color: #FFD700;
+      color: black;
+    }
+
+    .payment-section {
+      margin-top: 30px;
+    }
+
+    .payment-option {
+      margin: 10px 0;
+    }
+
+    .btn-pay {
+      background-color: #006400;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-pay:hover {
+      background-color: #32CD32;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bill-container">
+    <img src="./logo.webp" alt="Spice Symphony Logo" class="logo">
+    <div class="restaurant-name">Spice Symphony</div>
+
+    <h2>Your Final Bill</h2>
+    <ul id="itemList"></ul>
+    <div class="total" id="totalAmount"></div>
+
+    
+    <div class="payment-section">
+      <h5>Select Payment Method</h5>
+      <div class="form-check payment-option">
+        <input class="form-check-input" type="radio" name="paymentMethod" id="gpay" value="Google Pay" checked>
+        <label class="form-check-label" for="gpay">Google Pay (GPay)</label>
+      </div>
+      <div class="form-check payment-option">
+        <input class="form-check-input" type="radio" name="paymentMethod" id="cash" value="Cash on Delivery">
+        <label class="form-check-label" for="cash">Cash on Delivery</label>
+      </div>
+      <div class="text-center mt-3">
+        <button class="btn btn-pay" onclick="processPayment()">Proceed to Pay</button>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-clear" onclick="clearBill()">Clear Bill</button>
+      <a href="./dashbord.html" class="btn btn-secondary ms-2">Back to Dashboard</a>
+    </div>
+  </div>
+
+  <script>
+    const list = document.getElementById('itemList');
+    const totalAmount = document.getElementById('totalAmount');
+
+    let order = JSON.parse(localStorage.getItem('orderList')) || [];
+    let total = 0;
+
+    order.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} - ₹${item.price}`;
+      list.appendChild(li);
+      total += Number(item.price);
+    });
+
+    totalAmount.textContent = `Total: ₹${total}`;
+
+    function clearBill() {
+      localStorage.removeItem('orderList');
+      window.location.reload();
+    }
+
+    function processPayment() {
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+      alert(`Thank you for your order! You selected "${paymentMethod}" as your payment method. Your bill amount is ₹${total}.`);
+      localStorage.removeItem('orderList');
+      window.location.href = './dashbord.html';
+    }
+  </script>
+
+</body>
+
+</html>

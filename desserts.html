@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Delights Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('./resturant.png') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    header {
+      background: linear-gradient(to right, #ffefdb, #d63384);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 100px;
+      border-radius: 50%;
+    }
+
+    h1 {
+      color: #8b005f;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .item {
+      background-color: black;
+      color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      width: 220px;
+      padding: 15px;
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .item:hover {
+      transform: scale(1.05);
+    }
+
+    .item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .item h3 {
+      margin: 10px 0 5px;
+      color: #FFD700;
+      text-align: center;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #ccc;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .order-button {
+      background: linear-gradient(to right, #814608, #d63384);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease;
+      text-align: center;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .order-button:hover {
+      background: linear-gradient(to right, #ff69b4, #ffa07a);
+      color: black;
+    }
+  </style>
+  <script>
+    function addToBill(name, price) {
+      let currentOrder = JSON.parse(localStorage.getItem('orderList')) || [];
+      currentOrder.push({ name: name, price: price });
+      localStorage.setItem('orderList', JSON.stringify(currentOrder));
+      window.location.href = 'bill.html'; // Redirect to bill
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <img src="./logo.webp" alt="Logo" class="logo" />
+    <h1>Sweet Delights Menu</h1>
+  </header>
+
+  <section class="menu">
+    <div class="item">
+      <img src="./chocolate cake.jpg" alt="Chocolate Cake" />
+      <h3>Chocolate Cake</h3>
+      <p class="price">₹150</p>
+      <button class="order-button" onclick="addToBill('Chocolate Cake', 150)">Place Order</button>
+    </div>
+
+    <div class="item">
+      <img src="./cupcake.jpg" alt="Strawberry Cupcake" />
+      <h3>Strawberry Cupcake</h3>
+      <p class="price">₹90</p>
+      <button class="order-button" onclick="addToBill('Strawberry Cupcake', 90)">Place Order</button>
+    </div>
+
+    <div class="item">
+      <img src="./vanila icecream.webp" alt="Vanilla Ice Cream" />
+      <h3>Vanilla Ice Cream</h3>
+      <p class="price">₹70</p>
+      <button class="order-button" onclick="addToBill('Vanilla Ice Cream', 70)">Place Order</button>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Non-Veg Delicious Bites Menu</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background: url('./resturant.png') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      text-align: center;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* faded overlay */
+      z-index: -1;
+    }
+
+    .header-content {
+      background-color: #8B0000;
+      color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .logo {
+      height: 60px;
+      border-radius: 10px;
+    }
+
+    .menu-section {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ff9999;
+      padding-bottom: 5px;
+      margin: 40px 0 20px;
+      color: #ffcccc;
+    }
+
+    .menu-item {
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .menu-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .menu-details {
+      flex: 1;
+      text-align: left;
+    }
+
+    .menu-details h4 {
+      margin: 0;
+      color: #ffdddd;
+    }
+
+    .menu-details p {
+      margin: 5px 0 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .menu-item span {
+      font-weight: bold;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .order-btn {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      display: block;
+      margin-top: 5px;
+    }
+
+    .order-btn:hover {
+      background-color: #ff8080;
+      color: black;
+    }
+
+    @media (max-width: 600px) {
+      .menu-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .menu-details {
+        text-align: center;
+      }
+    }
+  </style>
+  <script>
+  function addToBill(name, price) {
+    let currentOrder = JSON.parse(localStorage.getItem('orderList')) || [];
+    currentOrder.push({ name: name, price: price });
+    localStorage.setItem('orderList', JSON.stringify(currentOrder));
+    window.location.href = 'bill.html'; // Go to billing page
+  }
+</script>
+
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <img src="./logo.webp" alt="Restaurant Logo" class="logo">
+      <div>
+        <h1>Non-Veg Delicious Bites</h1>
+        <p>Flavours of the Feast</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-section">
+    <h2>Non-Veg Starters</h2>
+
+    <div class="menu-item">
+      <img src="./chicken65.webp" alt="Chicken 65">
+      <div class="menu-details">
+        <h4>Chicken 65</h4>
+        <p>Deep-fried spicy chicken chunks, a South Indian favorite</p>
+        <button class="order-btn" onclick="addToBill('Chicken 65',160)">Place Order</button>
+      </div>
+      <span>₹160</span>
+    </div>
+
+    <div class="menu-item">
+      <img src="./fish finger.jpg" alt="Fish Finger">
+      <div class="menu-details">
+        <h4>Fish Fingers</h4>
+        <p>Crunchy fried fish strips served with tartar sauce</p>
+        <button class="order-btn" onclick="addToBill('Fish Fingers',180)">Place Order</button>
+      </div>
+      <span>₹180</span>
+    </div>
+
+    <h2>Main Course</h2>
+
+    <div class="menu-item">
+      <img src="./butter chicken.jpg" alt="Butter Chicken">
+      <div class="menu-details">
+        <h4>Butter Chicken</h4>
+        <p>Creamy tomato-based curry with tender chicken pieces</p>
+        <button class="order-btn" onclick="addToBill('Butter Chicken',220)">Place Order</button>
+      </div>
+      <span>₹220</span>
+    </div>
+
+    <div class="menu-item">
+      <img src="./chicken biriyani.jpg" alt="Chicken Biryani">
+      <div class="menu-details">
+        <h4>Chicken Biryani</h4>
+        <p>Layered basmati rice and chicken cooked with fragrant spices</p>
+        <button class="order-btn" onclick="addToBill('Chicken Biryani',200)">Place Order</button>
+      </div>
+      <span>₹200</span>
+    </div>
+
+    <h2>Specials</h2>
+
+    <div class="menu-item">
+      <img src="./grill chicken.jpg" alt="Grilled Chicken">
+      <div class="menu-details">
+        <h4>Grilled Chicken</h4>
+        <p>Perfectly seasoned and grilled chicken served with salad</p>
+        <button class="order-btn" onclick="addToBill('Grilled Chicken',240)">Place Order</button>
+      </div>
+      <span>₹240</span>
+    </div>
+
+    <div class="menu-item">
+      <img src="./egg curry.jpg" alt="Egg Curry">
+      <div class="menu-details">
+        <h4>Egg Curry</h4>
+        <p>Boiled eggs simmered in spicy tomato-onion gravy</p>
+        <button class="order-btn" onclick="addToBill('Egg Curry',120)">Place Order</button>
+      </div>
+      <span>₹120</span>
+    </div>
+
+    <h2>Desserts</h2>
+
+    <div class="menu-item">
+      <img src="./icecream.jpg" alt="Ice Cream">
+      <div class="menu-details">
+        <h4>Ice Cream</h4>
+        <p>Sweet chilled scoops in multiple flavors</p>
+        <button class="order-btn" onclick="addToBill('Ice Cream',50)">Place Order</button>
+      </div>
+      <span>₹50</span>
+    </div>
+
+    <h2>Drinks</h2>
+
+    <div class="menu-item">
+      <img src="./cold drinks.webp" alt="Cold Drinks">
+      <div class="menu-details">
+        <h4>Cold Drinks</h4>
+        <p>Sprite, Fanta, Coke – chilled & fizzy</p>
+        <button class="order-btn" onclick="addToBill('Sprite, Fanta, Coke',30)">Place Order</button>
+      </div>
+      <span>₹30</span>
+    </div>
+  </div>
+
+</body>
+</html>

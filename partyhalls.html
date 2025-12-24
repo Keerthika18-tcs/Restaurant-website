@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spice Symphony - Book Party Halls</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: url('./restaurant-interiors.jpg') no-repeat center center fixed; 
+      background-size: cover;
+      margin: 0;
+      padding-top: 80px;
+      color: #fff;
+      position: relative;
+      z-index: 0;
+    }
+
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6); 
+      z-index: -1;
+    }
+
+    .logo {
+      width: 70px;
+      height: auto;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .btn-book {
+      background-color: #8B0000;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-book:hover {
+      background-color: #FFD700;
+      color: #000;
+    }
+
+    h2 {
+      color: #FFD700;
+      text-align: center;
+      margin: 30px 0;
+    }
+  </style>
+  <script>
+  function addToBill(name, price) {
+    let currentOrder = JSON.parse(localStorage.getItem('orderList')) || [];
+    currentOrder.push({ name: name, price: price });
+    localStorage.setItem('orderList', JSON.stringify(currentOrder));
+    window.location.href = 'bill.html'; // Go to billing page
+  }
+</script>
+
+</head>
+<body>
+
+ 
+  <nav class="navbar fixed-top p-3">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center text-white" href="#">
+        <img src="./logo.webp" alt="Logo" class="logo me-2">
+        <strong>Spice Symphony</strong>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Book Your Perfect Party Hall</h2>
+
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      
+     
+      <div class="col">
+        <div class="card">
+          <img src="./hall1.avif" class="card-img-top" alt="Hall 1">
+          <div class="card-body text-center">
+            <h5 class="card-title">Royal Bliss Hall</h5>
+            <p>₹15,000 / day</p>
+            <button class="btn btn-book" onclick="addToBill('Royal Bliss Hall', 15000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="./hall2.jpg" class="card-img-top" alt="Hall 2">
+          <div class="card-body text-center">
+            <h5 class="card-title">Golden Crown Hall</h5>
+            <p>₹18,000 / day</p>
+            <button class="btn btn-book" onclick="addToBill('Golden Crown Hall', 18000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="./hall3.jpg" class="card-img-top" alt="Hall 3">
+          <div class="card-body text-center">
+            <h5 class="card-title">Pearl Palace</h5>
+            <p>₹20,000 / day</p>
+            <button class="btn btn-book" onclick="addToBill('Pearl Palace', 20000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="./hall 4.webp" class="card-img-top" alt="Hall 4">
+          <div class="card-body text-center">
+            <h5 class="card-title">Heritage Hall</h5>
+            <p>₹14,000 / day</p>
+            <button class="btn btn-book" onclick="addToBill('Heritage Hall', 14000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="./hall5.avif" class="card-img-top" alt="Hall 5">
+          <div class="card-body text-center">
+            <h5 class="card-title">Diamond Hall</h5>
+            <p>₹17,500 / day</p>
+            <button class="btn btn-book" onclick="addToBill('Diamond Hall', 17500)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="./hall6.jpg" class="card-img-top" alt="Hall 6">
+          <div class="card-body text-center">
+            <h5 class="card-title">Emerald Hall</h5>
+            <p>₹19,000 / day</p>
+            <button class="btn btn-book" onclick="addToBill('Emerald Hall', 19000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="hall7.jpg" class="card-img-top" alt="Hall 7">
+          <div class="card-body text-center">
+            <h5 class="card-title">Sapphire Banquet</h5>
+            <p>₹22,000 / day</p>
+            <button class="btn btn-book" onclick="addToBill('Sapphire Banquet', 22000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="hall8.jpg" class="card-img-top" alt="Hall 8">
+          <div class="card-body text-center">
+            <h5 class="card-title">The Grand Space</h5>
+            <p>₹25,000 / day</p>
+            <button class="btn btn-book" onclick="addToBill('The Grand Space', 25000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veg Delicious Bites Menu</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+      background: url('./resturant.png') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* dark transparent overlay */
+      z-index: -1;
+    }
+
+    .header-content {
+      background-color: #d2691e;
+      color: white;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .logo {
+      height: 60px;
+      border-radius: 10px;
+    }
+
+    .menu-section {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ffcc99;
+      padding-bottom: 5px;
+      margin: 40px 0 20px;
+      color: #ffe6cc;
+    }
+
+    .menu-item {
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .menu-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .menu-details {
+      flex: 1;
+      text-align: left;
+    }
+
+    .menu-details h4 {
+      margin: 0;
+      color: #ffe6cc;
+    }
+
+    .menu-details p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    .order-btn {
+      background-color: #ff944d;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      display: block;
+      margin-top: 5px;
+    }
+
+    .order-btn:hover {
+      background-color: #ffa366;
+      color: black;
+    }
+
+    .menu-item span {
+      font-weight: bold;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .menu-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .menu-details {
+        text-align: center;
+      }
+    }
+  </style>
+  <script>
+  function addToBill(name, price) {
+    let currentOrder = JSON.parse(localStorage.getItem('orderList')) || [];
+    currentOrder.push({ name: name, price: price });
+    localStorage.setItem('orderList', JSON.stringify(currentOrder));
+    window.location.href = 'bill.html'; // Go to billing page
+  }
+</script>
+
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <img src="./logo.webp" alt="Restaurant Logo" class="logo">
+      <div>
+        <h1>Veg Delicious Bites</h1>
+        <p>Flavours of the Feast</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-section">
+    <h2>Starters</h2>
+
+    <div class="menu-item">
+      <img src="./skillet-garlic-bread-3.jpg" alt="Garlic Bread">
+      <div class="menu-details">
+        <h4>Garlic Bread</h4>
+        <p>Toasted bread with garlic and herbs</p>
+        <button class="order-btn" onclick="addToBill('Garlic Bread', 60)">Place Order</button>
+
+      </div>
+      <span>₹60</span>
+    </div>
+
+    <div class="menu-item">
+      <img src="./veg soup.webp" alt="Veg Soup">
+      <div class="menu-details">
+        <h4>Veg Soup</h4>
+        <p>Hot and spicy mixed veg soup</p>
+        <button class="order-btn" onclick="addToBill('Veg Soup', 80)">Place Order</button>
+
+      </div>
+      <span>₹80</span>
+    </div>
+
+    <h2>Main Course</h2>
+
+    <div class="menu-item">
+      <img src="paneer.webp" alt="Paneer Butter Masala">
+      <div class="menu-details">
+        <h4>Paneer Butter Masala</h4>
+        <p>Rich creamy paneer dish with butter sauce</p>
+        <button class="order-btn" onclick="addToBill('Paneer Butter Masala', 180)">Place Order</button>
+
+      </div>
+      <span>₹180</span>
+    </div>
+
+    <div class="menu-item">
+      <img src="./veg birinai.jpg" alt="Veg Biryani">
+      <div class="menu-details">
+        <h4>Veg Biryani</h4>
+        <p>Fragrant rice with mixed vegetables and spices</p>
+        <button class="order-btn" onclick="addToBill('Veg Biryani', 150)">Place Order</button>
+
+      </div>
+      <span>₹150</span>
+    </div>
+
+    <h2>Desserts</h2>
+
+    <div class="menu-item">
+      <img src="./gulab-jamun-mousse-layered-dessert.jpg" alt="Gulab Jamun">
+      <div class="menu-details">
+        <h4>Gulab Jamun</h4>
+        <p>Sweet dumplings in rose-flavored syrup</p>
+        <button class="order-btn" onclick="addToBill('Gulab Jamun', 50)">Place Order</button>
+
+      </div>
+      <span>₹50</span>
+    </div>
+
+    <h2>Drinks</h2>
+
+    <div class="menu-item">
+      <img src="./masala chai.jpg" alt="Masala Chai">
+      <div class="menu-details">
+        <h4>Masala Chai</h4>
+        <p>Spiced Indian tea</p>
+        <button class="order-btn" onclick="addToBill('Masala Chai', 30)">Place Order</button>
+
+      </div>
+      <span>₹30</span>
+    </div>
+  </div>
+
+</body>
+</html>
